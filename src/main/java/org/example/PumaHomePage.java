@@ -13,14 +13,14 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class HomePage {
-    private static final Logger LOGGER = LogManager.getLogger(HomePage.class);
+public class PumaHomePage {
+    private static final Logger LOGGER = LogManager.getLogger(PumaHomePage.class);
     private final WebDriver driver;
     private final By searchBar = By.xpath("/html/body/div[1]/div/div/nav/div/div[1]/form/div/label/input");
 
     private final By elements = By.xpath("/html/body/div[1]/div/main/div/section/section/ul/li//h3");
 
-    public HomePage() {
+    public PumaHomePage() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
