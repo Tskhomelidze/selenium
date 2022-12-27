@@ -10,19 +10,19 @@ import org.testng.annotations.BeforeMethod;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Properties;
+import java.time.Duration;
 
 public class BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(BaseTest.class);
     private final BasePage basePage;
     private final RemoteWebDriver driver;
     public BaseTest() {
-        Properties properties = Configurations.getProperties();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setBrowserName(properties.getProperty("browser"));
+        desiredCapabilities.setBrowserName(Config.getProperty("browser"));
         desiredCapabilities.setPlatform(Platform.MAC);
         try {
-            driver = new RemoteWebDriver((new URL(properties.getProperty("seleniumURL"))), desiredCapabilities);
+            driver = new RemoteWebDriver((new URL(Config.getProperty("seleniumURL"))), desiredCapabilities);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         } catch (MalformedURLException e) {
             LOGGER.error("Error, could not setup RemoteWebDriver.");
             throw new RuntimeException(e);

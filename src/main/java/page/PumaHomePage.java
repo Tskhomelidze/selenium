@@ -1,5 +1,6 @@
 package page;
 
+import interfaces.IPageOpened;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
@@ -8,11 +9,11 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import service.BasePage;
+import service.Config;
 
-import java.time.Duration;
 import java.util.List;
 
-public class PumaHomePage extends BasePage {
+public class PumaHomePage extends BasePage implements IPageOpened {
     private static final Logger LOGGER = LogManager.getLogger(PumaHomePage.class);
     @FindBy(xpath = "/html/body/div[1]/div/div/nav/div/div[1]/form/div/label/input")
     private WebElement searchBar;
@@ -29,9 +30,12 @@ public class PumaHomePage extends BasePage {
         pressKey(searchBar,Keys.ENTER);
     }
 
+    @Override
+    public boolean isPageOpened(){
+        return super.isPageOpened(searchBar);
+    }
+
     public void printAllItemInfo(){
-        waitForLoad();
-        LOGGER.info("Page opened = "+ isPageOpened());
         LOGGER.info("Elements size = "+elementsList.size());
         for (WebElement webElement : elementsList) {
             LOGGER.info(webElement.getText());

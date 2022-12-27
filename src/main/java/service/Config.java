@@ -9,8 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Configurations {
-    private static final Logger LOGGER = LogManager.getLogger(Configurations.class);
+public class Config {
+    private static final Logger LOGGER = LogManager.getLogger(Config.class);
     private static final Properties properties;
     static {
         BufferedReader reader;
@@ -28,7 +28,7 @@ public class Configurations {
             throw new RuntimeException(e);
         }
     }
-    public static Properties getProperties(){
-        return properties;
+    public static String getProperty(String propertyName){
+        return properties.getProperty(propertyName);
     }
 }

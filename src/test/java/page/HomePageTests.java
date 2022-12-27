@@ -2,6 +2,7 @@ package page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import service.BaseTest;
 
@@ -13,13 +14,27 @@ public class HomePageTests extends BaseTest {
         ebayHomePage.clickOnElectronics();
         ebayHomePage.clickOnLaptops();
         ebayHomePage.clickOnAppleLaptops();
-        LOGGER.info("Page opened = "+ ebayHomePage.isPageOpened());
+        Assert.assertTrue(ebayHomePage.isPageOpened(),"Error, page is not opened.");
     }
 
-//    @Test
-//    public void pumaHomePageTest(){
-//        PumaHomePage pumaHomePage = new PumaHomePage(getDriver());
-//        pumaHomePage.search("Training boots");
-//        pumaHomePage.printAllItemInfo();
-//    }
+    @Test
+    public void pumaHomePageTest(){
+        PumaHomePage pumaHomePage = new PumaHomePage(getDriver());
+        pumaHomePage.search("TRAINING");
+        pumaHomePage.printAllItemInfo();
+        Assert.assertTrue(pumaHomePage.isPageOpened(),"Error, Page is not opened"); ;
+    }
+
+    @Test
+    public void nintendoHomePageTest(){
+        NintendoHomePage nintendoHomePage = new NintendoHomePage(getDriver());
+        nintendoHomePage.clickMyNintendoStoreBtn();
+        nintendoHomePage.clickHardwareBtn();
+        nintendoHomePage.clickProductBtn();
+        nintendoHomePage.clickAddToCartBtn();
+        nintendoHomePage.clickViewCartBtn();
+        nintendoHomePage.clickRemoveFromCartBtn();
+        Assert.assertTrue(nintendoHomePage.isPageOpened(),"Error, Page is not opened"); ;
+    }
+
 }
