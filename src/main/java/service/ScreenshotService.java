@@ -19,6 +19,7 @@ public class ScreenshotService {
         try {
             FileUtils.copyFile(scrFile, new File(screenshotFilePath));
         } catch (IOException e) {
+            LOGGER.error("Error, could not take a screenshot.");
             throw new RuntimeException("Error, could not take a screenshot.\n"+e);
         }
     }

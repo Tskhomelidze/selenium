@@ -1,26 +1,24 @@
 package page;
 
-import interfaces.IPageOpened;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import service.BasePage;
-import service.Config;
 
 import java.util.List;
 
-public class PumaHomePage extends BasePage implements IPageOpened {
-    private static final Logger LOGGER = LogManager.getLogger(PumaHomePage.class);
-    @FindBy(xpath = "/html/body/div[1]/div/div/nav/div/div[1]/form/div/label/input")
+public class PumaPageSearchbar extends BasePage {
+    private static final Logger LOGGER = LogManager.getLogger(PumaPageSearchbar.class);
+    @FindBy(xpath = "//input[@data-test-id='search-box']")
     private WebElement searchBar;
-    @FindBy(xpath = "/html/body/div[1]/div/main/div/section/section/ul/li//h3")
+    @FindBy(xpath = "//li[@data-test-id='product-list-item']")
     private List<WebElement> elementsList;
 
-    public PumaHomePage(RemoteWebDriver driver) {
+    public PumaPageSearchbar(WebDriver driver) {
         super(driver);
         PageFactory.initElements(super.driver, this);
     }
@@ -30,7 +28,6 @@ public class PumaHomePage extends BasePage implements IPageOpened {
         pressKey(searchBar,Keys.ENTER);
     }
 
-    @Override
     public boolean isPageOpened(){
         return super.isPageOpened(searchBar);
     }

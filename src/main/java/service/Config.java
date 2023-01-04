@@ -18,14 +18,14 @@ public class Config {
             reader = new BufferedReader(new FileReader("src/main/resources/config.properties"));
         } catch (FileNotFoundException e) {
             LOGGER.error("Error, could not read config.properties file.");
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error, could not read config.properties file.\n"+e);
         }
         properties = new Properties();
         try {
             properties.load(reader);
         } catch (IOException e) {
             LOGGER.error("Error, could not load config.properties file.");
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error, could not load config.properties file.\n"+e);
         }
     }
     public static String getProperty(String propertyName){
