@@ -1,9 +1,9 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="puma tests" parallel="methods" thread-count="2">
+<suite verbose="1" name="puma tests" parallel="methods" thread-count="3">
     <test name = "puma">
         <classes>
-            <class name = "page.PumaHomePageTests" />
+            <class name = "page.PageTests" />
         </classes>
     </test>
 </suite>

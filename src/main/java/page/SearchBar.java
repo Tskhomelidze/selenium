@@ -7,18 +7,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import service.BasePage;
 
 import java.util.List;
 
-public class PumaPageSearchbar extends BasePage {
-    private static final Logger LOGGER = LogManager.getLogger(PumaPageSearchbar.class);
+public class SearchBar extends BasePage {
+    private static final Logger LOGGER = LogManager.getLogger(SearchBar.class);
     @FindBy(xpath = "//input[@data-test-id='search-box']")
     private WebElement searchBar;
     @FindBy(xpath = "//li[@data-test-id='product-list-item']")
     private List<WebElement> elementsList;
 
-    public PumaPageSearchbar(WebDriver driver) {
+    public SearchBar(WebDriver driver) {
         super(driver);
         PageFactory.initElements(super.driver, this);
     }
