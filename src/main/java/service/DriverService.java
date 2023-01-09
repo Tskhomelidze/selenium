@@ -45,6 +45,7 @@ public class DriverService {
 
     public static void removeDriver(Long id) {
         webDriverHashMap.remove(id);
+        LOGGER.info("Removed driver from driver pool with id: "+id);
     }
 
 }

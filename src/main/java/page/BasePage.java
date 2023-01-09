@@ -29,7 +29,9 @@ public class BasePage {
     protected void click(WebElement element) {
         try {
             scrollToElementIfNotVisible(element);
+            String elementName = "\""+ element.getAccessibleName() + "\"";
             element.click();
+            LOGGER.info("Clicked "+elementName);
         } catch (Exception e) {
             takeScreenshot();
             LOGGER.error("Error, could not click the WebElement.\n" + element.toString());
@@ -61,10 +63,11 @@ public class BasePage {
         if(!element.isDisplayed()) {
             WebElement myElement = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(element));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", myElement);
+            LOGGER.info("Scrolled to element: "+element.getAccessibleName());
         }
         if(!element.isDisplayed()){
-            LOGGER.error("Element is still not visible.");
-            throw new RuntimeException("Element is still not visible.");
+            LOGGER.error("Error, Element is still not visible.");
+            throw new RuntimeException("Error, Element is still not visible.");
         }
     }
 
@@ -81,6 +84,7 @@ public class BasePage {
     }
 
     protected boolean isPageOpened(WebElement element) {
+        if(element == null) return false;
         return element.isDisplayed() || URL.equals(driver.getCurrentUrl());
     }
 
