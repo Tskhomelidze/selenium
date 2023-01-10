@@ -44,43 +44,35 @@ public class PageTests extends BaseTest {
     }
 
     @Test
+    public void formTest() {
+        Form form = new Form(getDriver());
+        form.openPage();
+        form.clickStayOnUSBtn();
+        form.clickCloseCookiesBannerBtn();
+        form.clickCloseSaleBtn();
+        form.clickDigitalGiftBtn();
+        form.selectGiftCard();
+        form.typeYourName("My Fake Name");
+        form.typeRecipientName("Recipient Fake Name");
+        form.typeRecipientEmail("FakeEmail@gmail.com");
+        form.typeGiftMessage("A gift from Solvd.");
+        form.clickAddToCartBtn();
+        Assert.assertTrue(form.isPageOpened(), "Error, Page is not opened");
+    }
+
+    @Test
     public void languageTest() {
         Language language = new Language(getDriver());
         language.openPage();
         language.clickAccountBtn();
         language.clickLanguageBtn();
         language.clickSpainBtn();
-
         language.clickAcceptCookiesBtn();
         language.clickCloseSaleBtn();
         language.clickLanguageBtnOnSpanishPage();
         language.searchEnglishLanguage();
         language.clickEnglishLangBtn();
-
         Assert.assertTrue(language.isPageOpened(), "Error, Page is not opened");
-    }
-
-    @Test
-    public void formTest() {
-        Form form = new Form(getDriver());
-        form.openPage();
-        form.clickStayOnUSBtn();
-        form.clickCloseCookiesBannerBtn();
-
-        // sometimes is clicked but the next page is not opened
-        // but usually works when you don't have the window opened.
-        form.clickDigitalGiftBtn();
-
-//        form.selectGiftCard(); // <- generates error, uncomment to see the error.
-//        form.ClickGiftCard();
-
-        form.typeYourName("My Fake Name");
-        form.typeRecipientName("Recipient Fake Name");
-        form.typeRecipientEmail("FakeEmail@gmail.com");
-        form.typeGiftMessage("A gift from Solvd.");
-        form.clickAddToCartBtn(); // <- generates error
-
-        Assert.assertTrue(form.isPageOpened(), "Error, Page is not opened");
     }
 
 }

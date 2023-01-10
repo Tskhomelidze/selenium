@@ -12,7 +12,7 @@ public class Cart extends BasePage {
     @FindBy(xpath = "//li[@data-test-id='main-nav-category-item']//ul[@aria-label='Clothing']//a[@data-link-name='Classics']")
     WebElement classicsBtn;
 
-    @FindBy(xpath = "//a[@data-test-id='product-list-item-link' and @aria-label=\"Go to Classics Logo Men's Tee Peacoat\"]")
+    @FindBy(xpath = "(//a[@data-test-id='product-list-item-link'])[1]")
     WebElement product;
 
     @FindBy(xpath = "//div[@aria-label=\"Select Size\"]//span[text()='L']")

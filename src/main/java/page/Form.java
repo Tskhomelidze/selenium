@@ -16,7 +16,10 @@ public class Form extends BasePage {
     @FindBy(xpath = "//button[@data-test-id='cookie-banner-close-btn']")
     WebElement closeCookiesBannerBtn;
 
-    @FindBy(xpath = "//select[@id='select-gift-card-value']")
+    @FindBy(xpath = "//button[@data-test-id='newsletter-sign-up-form-button']/div")
+    WebElement closeSaleBtn;
+
+    @FindBy(xpath = "//select[@id='select-gift-card-value']/option[@value='50']")
     WebElement selectGiftCardBtn;
 
     @FindBy(xpath = "//*[text() = '$50.00']")
@@ -37,9 +40,6 @@ public class Form extends BasePage {
     @FindBy(xpath = "//button[@data-test-id='gift-card-add-to-cart']")
     WebElement addToCartBtn;
 
-    @FindBy(xpath = "//a[@data-test-id='minicart-cart-link']")
-    WebElement cardCheckoutBtn;
-
     public Form(WebDriver driver) {
         super(driver);
         PageFactory.initElements(super.driver, this);
@@ -51,6 +51,10 @@ public class Form extends BasePage {
 
     public void clickCloseCookiesBannerBtn() {
         click(closeCookiesBannerBtn);
+    }
+
+    public void clickCloseSaleBtn(){
+        click(closeSaleBtn);
     }
 
     public void clickDigitalGiftBtn() {
@@ -87,8 +91,7 @@ public class Form extends BasePage {
     }
 
     public boolean isPageOpened() {
-        return super.isPageOpened(cardCheckoutBtn);
+        return super.isPageOpened(addToCartBtn);
     }
-
 
 }
