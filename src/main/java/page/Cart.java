@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class Cart extends BasePage {
     @FindBy(xpath = "//li[@data-test-id='main-nav-category-item']//span[text()='Men']")
     WebElement menBtn;
@@ -12,8 +14,8 @@ public class Cart extends BasePage {
     @FindBy(xpath = "//li[@data-test-id='main-nav-category-item']//ul[@aria-label='Clothing']//a[@data-link-name='Classics']")
     WebElement classicsBtn;
 
-    @FindBy(xpath = "(//a[@data-test-id='product-list-item-link'])[1]")
-    WebElement product;
+    @FindBy(xpath = "//a[@data-test-id='product-list-item-link']")
+    List<WebElement> product;
 
     @FindBy(xpath = "//div[@aria-label=\"Select Size\"]//span[text()='L']")
     WebElement selectSizeL;
@@ -46,7 +48,7 @@ public class Cart extends BasePage {
     }
 
     public void clickProduct() {
-        click(product);
+        click(product.get(0));
     }
 
     public void clickSelectSizeL() {
